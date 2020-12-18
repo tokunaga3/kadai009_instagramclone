@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   def new
     @user = User.new
   end
@@ -13,13 +13,34 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user.id), notice: "画像を編集しました！"
+    else
+      render :edit
+    end
+  end
+
   def show
-    @user = User.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'user was successfully destroyed.' }
+    end
   end
 
   private
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation, :image ,:image_cache)
   end
+  def set_user
+    @user = User.find(params[:id])
+  end
+
 end

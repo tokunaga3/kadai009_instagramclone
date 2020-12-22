@@ -60,7 +60,7 @@ class FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
     if @feed.user_id == current_user.id
     else
-      redirect_to user_path(current_user.id), notice: "ログインユーザーが違うので編集できません"
+      redirect_to feeds_path, notice: "ログインユーザーが違うので編集できません"
     end
   end
 

@@ -22,6 +22,8 @@ class FeedsController < ApplicationController
     respond_to do |format|
       if @feed.save
         format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
+        ContactMailer.contact_mail(@contact).deliver#画像が保存される時にメールを送る機能
+        # ContactMailer.with(user: @user).contact_mail.deliver_later
       else
         format.html { render :new }
       end
@@ -56,6 +58,10 @@ class FeedsController < ApplicationController
   private
   def set_feed
     @feed = Feed.find(params[:id])
+    if @feed.user_id == current_user.id
+    else
+      redirect_to user_path(current_user.id), notice: "ログインユーザーが違うので編集できません"
+    end
   end
 
   def feed_params

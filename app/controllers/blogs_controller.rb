@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+
   def index
     @blog = Blog.all
   end
@@ -46,6 +47,10 @@ class BlogsController < ApplicationController
 
   def set_blog
     @blog = Blog.find(params[:id])
+    if @blog.user_id == current_user.id
+    else
+      redirect_to user_path(current_user.id), notice: "ログインユーザーが違うので編集できません"
+    end
   end
 
 end

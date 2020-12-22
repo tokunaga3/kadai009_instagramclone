@@ -1,0 +1,15 @@
+<header>
+  <h1>お気に入り一覧</h1>
+</header>
+<table>
+  <tr >
+    <th>お気に入り</th>
+  </tr>
+  <% @favorites.each do |favorite| %>
+  <tr>
+    <td><%= image_tag favorite.feed.image.url %></td>
+    <td><%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete, class: 'btn btn-danger' %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to '新しく投稿する', new_blog_path %>

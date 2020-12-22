@@ -7,7 +7,7 @@
     <th>作成者</th>
   </tr>
   <% @blog.each do |blog| %>
-  <tr class="row">
+  <tr>
     <td><%= blog.name %></td>
     <td><%= blog.user.name %></td>
     <td><%= link_to '詳細を確認する', blog_path(blog) %></td>

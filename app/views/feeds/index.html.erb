@@ -16,7 +16,7 @@
       <tr>
         <td><%= image_tag feed.image.url %></td>
         <td ><%= feed.user.name %></td>
-        <td><%= link_to 'お気に入りにする', feed %></td>
+        <td><%= link_to 'お気に入り設定', feed %></td>
         <td><%= link_to '編集', edit_feed_path(feed) %></td>
         <td><%= link_to '削除', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -25,5 +25,4 @@
 </table>
 
 <br>
-
 <%= link_to '新しい画像を投稿する', new_feed_path %>

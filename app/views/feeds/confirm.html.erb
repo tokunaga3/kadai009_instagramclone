@@ -1,5 +1,7 @@
 <h1>確認画面</h1>
 <%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
+  <%= @feed.name %>
+  <%= form.hidden_field :name %>
   <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
   <%= form.hidden_field :image_cache %>
   <%= form.submit "投稿する" %>

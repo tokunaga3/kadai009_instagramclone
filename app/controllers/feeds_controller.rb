@@ -22,8 +22,7 @@ class FeedsController < ApplicationController
     respond_to do |format|
       if @feed.save
         format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
-        ContactMailer.contact_mail(@contact).deliver#画像が保存される時にメールを送る機能
-        # ContactMailer.with(user: @user).contact_mail.deliver_later
+        # ContactMailer.contact_mail(@feed).deliver#画像が保存される時にメールを送る機能
       else
         format.html { render :new }
       end
@@ -65,6 +64,6 @@ class FeedsController < ApplicationController
   end
 
   def feed_params
-    params.require(:feed).permit(:image, :image_cache)
+    params.require(:feed).permit(:image, :image_cache, :name)
   end
 end

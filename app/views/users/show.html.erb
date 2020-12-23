@@ -5,7 +5,11 @@
   <p>
     <strong>プロフィール画像</strong>
     <% if @user.image? %>
-    <%= image_tag @user.image.url %>
+    <%= image_tag @user.image.url,size: '200x200'  %>
     <% end %>
   </p>
-  <%= link_to 'プロフィール画像を選択', edit_user_path(@user) %>
+  <p>
+  <strong>コメント</strong>
+  <%= @user.content %>
+  </p>
+  <%= link_to 'プロフィール編集する', edit_user_path(@user) %>

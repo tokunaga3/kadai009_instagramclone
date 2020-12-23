@@ -14,6 +14,8 @@
   <%= image_tag(@user.image.url)if @user.image && @user.image.url %>
   <%= form.file_field :image %>
   <%= form.hidden_field :image_cache %>
+  <%= form.label :content %>
+  <%= form.text_field :content %>
   <%= form.label :password %>
   <%= form.password_field :password %>
   <%= form.label :password_confirmation %>

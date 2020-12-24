@@ -26,6 +26,10 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if @user == current_user.id
+    else
+      redirect_to feeds_path, notice: "ログインユーザーが違うので編集できません"
+    end
   end
 
   def destroy

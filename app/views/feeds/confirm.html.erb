@@ -7,6 +7,7 @@
   <%= form.submit "投稿する" %>
 <% end %>
 <%= form_with(model:@feed, url:new_feed_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :name %>
   <%= form.hidden_field :image_cache %>
   <%= form.submit "戻る", name: "back" %>
 <% end %>

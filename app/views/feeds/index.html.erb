@@ -18,9 +18,11 @@
         <td><%= feed.name %></td>
         <td><%= image_tag feed.image.url,size: '100x100' %></td>
         <td ><%= feed.user.name %></td>
-        <td><%= link_to 'お気に入り設定', feed %></td>
-        <td><%= link_to '編集', edit_feed_path(feed) %></td>
-        <td><%= link_to '削除', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if feed.user_id == current_user.id %>
+          <td><%= link_to 'お気に入り設定', feed %></td>
+          <td><%= link_to '編集', edit_feed_path(feed) %></td>
+          <td><%= link_to '削除', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

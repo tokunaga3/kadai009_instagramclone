@@ -20,7 +20,7 @@
         <td ><%= feed.user.name %></td>
         <% if feed.user_id == current_user.id %>
           <td><%= link_to 'お気に入り設定', feed %></td>
-          <td><%= link_to '編集', edit_feed_path(feed) %></td>
+          <td><%= link_to '編集', edit_feed_path(feed.id) %></td>
           <td><%= link_to '削除', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>

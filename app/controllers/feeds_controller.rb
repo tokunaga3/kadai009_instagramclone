@@ -44,10 +44,8 @@ class FeedsController < ApplicationController
     respond_to do |format|
       if @feed.update(feed_params)
         format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
-        format.json { render :show, status: :ok, location: @feed }
       else
         format.html { render :edit }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,6 +59,7 @@ class FeedsController < ApplicationController
 
   private
   def set_feed
+    # binding.irb
     @feed = Feed.find(params[:id])
     if @feed.user_id == current_user.id
     else
